@@ -1,38 +1,21 @@
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  Card,
-  CardContent,
-  Chip,
-  FormControl,
-  Grid,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  styled,
-  Typography
-} from '@mui/material';
 import * as React from 'react';
+import PropTypes from 'prop-types';
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Chip from '@mui/material/Chip';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FormControl from '@mui/material/FormControl';
+import InputAdornment from '@mui/material/InputAdornment';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import {styled} from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
-import CardMedia from "@mui/material/CardMedia";
-// import Avatar from '../../../../../../material-ui/packages/mui-material/src/Avatar';
-// import AvatarGroup from '../../../../../../material-ui/packages/mui-material/src/AvatarGroup';
-// import Box from '../../../../../../material-ui/packages/mui-material/src/Box';
-// import Card from '../../../../../../material-ui/packages/mui-material/src/Card';
-// import CardContent from '../../../../../../material-ui/packages/mui-material/src/CardContent';
-// import CardMedia from '../../../../../../material-ui/packages/mui-material/src/CardMedia';
-// import Chip from '../../../../../../material-ui/packages/mui-material/src/Chip';
-// import Grid from '../../../../../../material-ui/packages/mui-material/src/Grid';
-// import IconButton from '../../../../../../material-ui/packages/mui-material/src/IconButton';
-// import Typography from '../../../../../../material-ui/packages/mui-material/src/Typography';
-// import FormControl from '../../../../../../material-ui/packages/mui-material/src/FormControl';
-// import InputAdornment from '../../../../../../material-ui/packages/mui-material/src/InputAdornment';
-// import OutlinedInput from '../../../../../../material-ui/packages/mui-material/src/OutlinedInput';
-// import { styled } from '../../../../../../material-ui/packages/mui-material/src/styles';
-// import SearchRoundedIcon from '../../../../../../material-ui/packages/mui-icons-material/lib/esm/SearchRounded';
-// import RssFeedRoundedIcon from '../../../../../../material-ui/packages/mui-icons-material/lib/esm/RssFeedRounded';
+import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 
 const cardData = [
   {

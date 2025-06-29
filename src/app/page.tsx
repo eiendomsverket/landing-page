@@ -1,10 +1,12 @@
 'use client';
 import React from 'react';
-// import Blog from './blog/Blog';
+import SignIn from './sign-in/SignIn';
+ import Blog from './blog/Blog';
 import MaretingPage from '../app/marketing-page/MarketingPage';
 export default function Home() {
   return (
-      // <Blog/>
-      <MaretingPage/>
+       <Blog/>
+      //  <MaretingPage/>
+       // <SignIn/>
   );
 }
