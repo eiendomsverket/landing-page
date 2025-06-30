@@ -17,6 +17,10 @@ import ForgotPassword from './components/ForgotPassword';
 import AppTheme from '../shared-theme/AppTheme';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
 import ColorModeSelect from '../shared-theme/ColorModeSelect'
+import { loginUser } from './api';
+import { useRouter } from 'next/navigation';
+import { decodeJwt } from './utils/jwt';
+
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
@@ -65,6 +69,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -74,16 +79,49 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
     setOpen(false);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!validateInputs()) {
       return;
     }
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email') as string;
+    console.log('Email: ', email);
+    const password = data.get('password') as string;
+    console.log("Password: ", password);
+    try {
+      console.log("Attempting to log in with email: ", email);
+      const response = await loginUser(email, password);
+      const result = response.data;
+
+      console.log("response " + JSON.stringify(result));
+      if (result) {
+        sessionStorage.setItem('jwt', JSON.stringify(result));
+        try {
+          const decoded = decodeJwt(JSON.stringify(result));
+          console.log("Decoded JWT: ", decoded);
+          const role = decoded?.role;
+          console.log("role: " + role);
+          if (role === 'MEGLER') {
+            router.push('/sales-report');
+          } else if (role === 'TAKSTMANN') {
+            router.push('/rapport');
+          } else {
+            router.push('/');
+          }
+        } catch (e) {
+          setPasswordError(true);
+          setPasswordErrorMessage('Ugyldig token mottatt.');
+        }
+      } else {
+        setPasswordError(true);
+        setPasswordErrorMessage('Login feilet. Ugyldig respons.');
+      }
+    } catch (error: any) {
+      setPasswordError(true);
+      setPasswordErrorMessage('Login failed. Please check your credentials.');
+      console.error(error);
+    }
   };
 
   const validateInputs = () => {

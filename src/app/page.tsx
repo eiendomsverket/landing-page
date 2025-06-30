@@ -1,12 +1,6 @@
-'use client';
-import React from 'react';
-import SignIn from './sign-in/SignIn';
- import Blog from './blog/Blog';
-import MaretingPage from '../app/marketing-page/MarketingPage';
+import {redirect} from 'next/navigation';
+
 export default function Home() {
-  return (
-       <Blog/>
-      //  <MaretingPage/>
-       // <SignIn/>
-  );
+  redirect('/home-page');
+  return null;
 }

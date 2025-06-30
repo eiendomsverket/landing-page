@@ -6,21 +6,6 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from '@mui/icons-material/Twitter';
 import TextField from "@mui/material/TextField";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-// import Box from '../../../../../../material-ui/packages/mui-material/src/Box';
-// import Button from '../../../../../../material-ui/packages/mui-material/src/Button';
-// import Container from '../../../../../../material-ui/packages/mui-material/src/Container';
-// import Divider from '../../../../../../material-ui/packages/mui-material/src/Divider';
-// import IconButton from '../../../../../../material-ui/packages/mui-material/src/IconButton';
-// import InputLabel from '../../../../../../material-ui/packages/mui-material/src/InputLabel';
-// import Link from '../../../../../../material-ui/packages/mui-material/src/Link';
-// import Stack from '../../../../../../material-ui/packages/mui-material/src/Stack';
-// import TextField from '../../../../../../material-ui/packages/mui-material/src/TextField';
-// import Typography from '../../../../../../material-ui/packages/mui-material/src/Typography';
-// import GitHubIcon from '../../../../../../material-ui/packages/mui-icons-material/lib/esm/GitHub';
-// import LinkedInIcon from '../../../../../../material-ui/packages/mui-icons-material/lib/esm/LinkedIn';
-// import TwitterIcon from '../../../../../../material-ui/packages/mui-icons-material/lib/esm/X';
-// import SitemarkIcon from './SitemarkIcon';
-
 
 function Copyright() {
   return (
