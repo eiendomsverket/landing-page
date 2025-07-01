@@ -11,7 +11,6 @@ export type ConditionReport = {
   location: string;
   reporter: string;
   costEstimate: string;
-  images: string[];
 };
 
 const exampleReports: ConditionReport[] = [
@@ -24,11 +23,7 @@ const exampleReports: ConditionReport[] = [
     date: '2025-06-15',
     location: 'Kjeller',
     reporter: 'Ola Nordmann',
-    costEstimate: '45 000 kr',
-    images: [
-      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-      'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80',
-    ],
+    costEstimate: '45 000 kr'
   },
   {
     id: '2',
@@ -39,10 +34,7 @@ const exampleReports: ConditionReport[] = [
     date: '2025-05-20',
     location: 'Stue',
     reporter: 'Kari Nordmann',
-    costEstimate: '3 500 kr',
-    images: [
-      'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
-    ],
+    costEstimate: '3 500 kr'
   },
 ];
 
@@ -60,16 +52,6 @@ export default function ReportOverview({ reports = exampleReports }: { reports?:
                   <span className={`report-severity-tag severity-${report.severity.toLowerCase()}`}>{report.severity}</span>
                 </div>
               </header>
-              <figure className="report-images">
-                {report.images.map((img, idx) => (
-                    <img
-                        key={idx}
-                        src={img}
-                        alt={report.title}
-                        className="report-image"
-                    />
-                ))}
-              </figure>
               <div className="report-description-row">
                 <p className="report-description">{report.description}</p>
               </div>
