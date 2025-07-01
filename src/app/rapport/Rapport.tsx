@@ -11,6 +11,11 @@ import ShieldIcon from './component/ShieldIcon';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Chip from '@mui/material/Chip';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import PlaceIcon from '@mui/icons-material/Place';
+import PersonIcon from '@mui/icons-material/Person';
+import PaidIcon from '@mui/icons-material/Paid';
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 
 const exampleReports = [
 	{
@@ -66,7 +71,7 @@ export default function Rapport(props: { disableCustomTheme?: boolean }) {
 	return (
 		<AppTheme {...props}>
 			<CssBaseline enableColorScheme />
-			<Container maxWidth="md" disableGutters sx={{ minHeight: '100vh', bgcolor: 'background.default', p: 0 }}>
+			<Container maxWidth="md" disableGutters sx={{ minHeight: '100vh', bgcolor: 'background.default', p: 0, pt: 4 }}>
 				<Paper elevation={0} square sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
 					<Box sx={{ px: { xs: 1, sm: 2, md: 3 }, pb: 4 }}>
 						<Paper
@@ -111,6 +116,23 @@ export default function Rapport(props: { disableCustomTheme?: boolean }) {
 							<Box>
 								<ColorModeIconDropdown />
 							</Box>
+							<Box ml={2}>
+								<button
+									onClick={() => {/* TODO: implement logout logic */}}
+									style={{
+										background: '#ef4444',
+										color: '#fff',
+										border: 'none',
+										borderRadius: 6,
+										padding: '8px 16px',
+										fontWeight: 600,
+										cursor: 'pointer',
+										fontSize: 16
+									}}
+								>
+									Logg ut
+								</button>
+							</Box>
 						</Paper>
 						<Stack spacing={3}>
 							{exampleReports.map((report) => (
@@ -141,11 +163,22 @@ export default function Rapport(props: { disableCustomTheme?: boolean }) {
 											{report.description}
 										</Typography>
 										<Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" divider={<Divider orientation="vertical" flexItem />}>
-											<Typography variant="caption" color="text.secondary">Dato: {report.date}</Typography>
-											<Typography variant="caption" color="text.secondary">Sted: {report.location}</Typography>
-											<Typography variant="caption" color="text.secondary">Rapportør: {report.reporter}</Typography>
-											<Typography variant="caption" color="text.secondary">Kostnad: {report.costEstimate}</Typography>
-											<Typography variant="caption" color="text.secondary">Bilder: {report.images.length}</Typography>
+											<Box display="flex" alignItems="center" gap={0.5}>
+												<CalendarMonthIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+												<Typography variant="caption" color="text.secondary">{report.date}</Typography>
+											</Box>
+											<Box display="flex" alignItems="center" gap={0.5}>
+												<PlaceIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+												<Typography variant="caption" color="text.secondary">{report.location}</Typography>
+											</Box>
+											<Box display="flex" alignItems="center" gap={0.5}>
+												<PersonIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+												<Typography variant="caption" color="text.secondary">{report.reporter}</Typography>
+											</Box>
+											<Box display="flex" alignItems="center" gap={0.5}>
+												<PaidIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+												<Typography variant="caption" color="text.secondary">{report.costEstimate}</Typography>
+											</Box>
 										</Stack>
 									</Stack>
 								</Paper>
