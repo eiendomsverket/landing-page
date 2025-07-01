@@ -3,8 +3,7 @@ import * as React from 'react';
 import CssBaseline from "@mui/material/CssBaseline";
 import AppTheme from "@/app/shared-theme/AppTheme";
 import Header from './component/Header';
-import ReportActions from './component/ReportActions';
-import ConditionReportOverview from './component/ConditionReportOverview';
+import ReportOverview from './component/ReportOverview';
 
 export default function Rapport(props: { disableCustomTheme?: boolean }) {
   return (
@@ -13,8 +12,7 @@ export default function Rapport(props: { disableCustomTheme?: boolean }) {
         <AppTheme {...props}>
           <CssBaseline enableColorScheme/>
           <Header/>
-          <ReportActions/>
-            <ConditionReportOverview/>
+          <ReportOverview/>
         </AppTheme>
       </div>
 

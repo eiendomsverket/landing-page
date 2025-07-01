@@ -46,12 +46,12 @@ const exampleReports: ConditionReport[] = [
   },
 ];
 
-export default function ConditionReportOverview({ reports = exampleReports }: { reports?: ConditionReport[] }) {
+export default function ReportOverview({ reports = exampleReports }: { reports?: ConditionReport[] }) {
   return (
     <section className="report-overview-container" aria-label="Tilstandsrapporter">
       <ul className="report-list report-list--wide">
         {reports.map((report) => (
-          <li className="report-card report-card--wide" key={report.id}>
+          <li className="report-card" key={report.id}>
             <article className="report-article">
               <header className="report-header-row">
                 <div className="report-header-main">
@@ -59,8 +59,17 @@ export default function ConditionReportOverview({ reports = exampleReports }: { 
                   <span className={`report-status-tag status-${report.status === 'Fullført' ? 'complete' : 'processing'}`}>{report.status}</span>
                   <span className={`report-severity-tag severity-${report.severity.toLowerCase()}`}>{report.severity}</span>
                 </div>
-                <button className="report-details-btn report-details-btn--top">Se detaljer</button>
               </header>
+              <figure className="report-images">
+                {report.images.map((img, idx) => (
+                    <img
+                        key={idx}
+                        src={img}
+                        alt={report.title}
+                        className="report-image"
+                    />
+                ))}
+              </figure>
               <div className="report-description-row">
                 <p className="report-description">{report.description}</p>
               </div>
@@ -71,16 +80,6 @@ export default function ConditionReportOverview({ reports = exampleReports }: { 
                 <span className="report-meta"><svg className="meta-icon" viewBox="0 0 20 20"><rect x="3" y="7" width="14" height="10" rx="2" stroke="#8a8a8a" strokeWidth="2" fill="none"/><path d="M3 10h14" stroke="#8a8a8a" strokeWidth="2"/></svg>{report.costEstimate}</span>
                 <span className="report-meta"><svg className="meta-icon" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8a8a8a" strokeWidth="2" fill="none"/><circle cx="10" cy="10" r="3" stroke="#8a8a8a" strokeWidth="2" fill="none"/></svg>{report.images.length} bilder</span>
               </div>
-              <figure className="report-images report-images--bottom">
-                {report.images.map((img, idx) => (
-                  <img
-                    key={idx}
-                    src={img}
-                    alt={report.title}
-                    className="report-image report-image--bottom"
-                  />
-                ))}
-              </figure>
             </article>
           </li>
         ))}
