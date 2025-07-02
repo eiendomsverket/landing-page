@@ -17,9 +17,10 @@ import ForgotPassword from './components/ForgotPassword';
 import AppTheme from '../shared-theme/AppTheme';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
 import ColorModeSelect from '../shared-theme/ColorModeSelect'
-import { loginUser } from './api';
+import { loginUser } from '@/app/utils/api';
 import { useRouter } from 'next/navigation';
-import { decodeJwt } from './utils/jwt';
+import { decodeJwt } from '@/app/utils/jwt';
+import {setSessionItem} from "@/app/utils/storage";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -96,7 +97,7 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
 
       console.log("response " + JSON.stringify(result));
       if (result) {
-        sessionStorage.setItem('jwt', JSON.stringify(result));
+        setSessionItem('access-token', JSON.stringify(result));
         try {
           const decoded = decodeJwt(JSON.stringify(result));
           console.log("Decoded JWT: ", decoded);
